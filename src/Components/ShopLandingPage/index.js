@@ -4,6 +4,7 @@ import { config } from "../../server/config";
 
 const ShopLandingPage = () => {
   const [data, setData] = useState();
+  const [cart, setCart] = useState([]);
   const fetchData = async () => {
     const productList = await axios.get(config.url_products);
     setData(productList.data);
@@ -13,11 +14,15 @@ const ShopLandingPage = () => {
     fetchData();
   }, []);
 
+  const addCart = (item) => {
+    setCart([...cart, item]);
+  };
+
   return (
     <>
       <div className="row">
         <div className="col-3 bg-primary">
-          <div className="card ">
+          <div className="card mb-2">
             <div className="card-body">
               <h5 className="card-title">Sort</h5>
               <ul className="list-group">
@@ -25,6 +30,20 @@ const ShopLandingPage = () => {
                 <li className="list-group-item">Descending</li>
                 <li className="list-group-item">Rates</li>
               </ul>
+            </div>
+          </div>
+          <div className="card ">
+            <div className="card-body">
+              <h5 className="card-title">Cart</h5>
+              {cart.map((item, index) => {
+                return (
+                  <ul key={index}>
+                    <li>
+                      {item.title} | {item.price}
+                    </li>
+                  </ul>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -45,10 +64,20 @@ const ShopLandingPage = () => {
                             <div className="meta price">$ {item.price}</div>
                             <div className="meta">{item.category}</div>
                             <div className="form-group d-flex align-items-center">
-                            <button type="button" className="btn btn-sm btn-dark button-shop"> Add Item</button>
-                            <button type="button" className="btn btn-sm btn-dark button-shop"> View</button>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-dark button-shop"
+                                onClick={() => addCart(item)}
+                              >
+                                Add Item
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-dark button-shop"
+                              >
+                                View
+                              </button>
                             </div>
-                           
                           </div>
                         </div>
                       </div>

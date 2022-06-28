@@ -44,9 +44,9 @@ const ShopLandingPage = () => {
                             <div className="header">{item.title}</div>
                             <div className="meta price">$ {item.price}</div>
                             <div className="meta">{item.category}</div>
-                            <div className="action d-flex flex-row">
-                            <button type="button" className="btn add-item btn-primary pl-3 mr-2"> Add Item</button>
-                            <button type="button" className="btn view btn-primary pl-3"> View</button>
+                            <div className="form-group d-flex align-items-center justify-content-between ">
+                            <button type="button" className="btn btn-sm btn-dark "> Add Item</button>
+                            <button type="button" className="btn btn-sm btn-dark "> View</button>
                             </div>
                            
                           </div>

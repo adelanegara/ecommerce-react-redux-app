@@ -11,7 +11,7 @@
         "rate": 3.9,
         "count": 120
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 2,
@@ -24,7 +24,7 @@
         "rate": 4.1,
         "count": 259
       },
-      "quantity":8
+      "stocks":8
     },
     {
       "id": 3,
@@ -37,7 +37,7 @@
         "rate": 4.7,
         "count": 500
       },
-      "quantity":15
+      "stocks":15
     },
     {
       "id": 4,
@@ -50,7 +50,7 @@
         "rate": 2.1,
         "count": 430
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 5,
@@ -63,7 +63,7 @@
         "rate": 4.6,
         "count": 400
       },
-      "quantity":15
+      "stocks":15
     },
     {
       "id": 6,
@@ -76,7 +76,7 @@
         "rate": 3.9,
         "count": 70
       },
-      "quantity":30
+      "stocks":30
     },
     {
       "id": 7,
@@ -89,7 +89,7 @@
         "rate": 3,
         "count": 400
       },
-      "quantity":6
+      "stocks":6
     },
     {
       "id": 8,
@@ -102,7 +102,7 @@
         "rate": 1.9,
         "count": 100
       },
-      "quantity":20
+      "stocks":20
     },
     {
       "id": 9,
@@ -115,7 +115,7 @@
         "rate": 3.3,
         "count": 203
       },
-      "quantity":15
+      "stocks":15
     },
     {
       "id": 10,
@@ -128,7 +128,7 @@
         "rate": 2.9,
         "count": 470
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 11,
@@ -141,7 +141,7 @@
         "rate": 4.8,
         "count": 319
       },
-      "quantity":15
+      "stocks":15
     },
     {
       "id": 12,
@@ -154,7 +154,7 @@
         "rate": 4.8,
         "count": 400
       },
-      "quantity":20
+      "stocks":20
     },
     {
       "id": 13,
@@ -167,7 +167,7 @@
         "rate": 2.9,
         "count": 250
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 14,
@@ -180,7 +180,7 @@
         "rate": 2.2,
         "count": 140
       },
-      "quantity":5
+      "stocks":5
     },
     {
       "id": 15,
@@ -193,7 +193,7 @@
         "rate": 2.6,
         "count": 235
       },
-      "quantity":20
+      "stocks":20
     },
     {
       "id": 16,
@@ -206,7 +206,7 @@
         "rate": 2.9,
         "count": 340
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 17,
@@ -219,7 +219,7 @@
         "rate": 3.8,
         "count": 679
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 18,
@@ -232,7 +232,7 @@
         "rate": 4.7,
         "count": 130
       },
-      "quantity":10
+      "stocks":10
     },
     {
       "id": 19,
@@ -245,7 +245,7 @@
         "rate": 4.5,
         "count": 146
       },
-      "quantity":15
+      "stocks":15
     },
     {
       "id": 20,
@@ -258,7 +258,7 @@
         "rate": 3.6,
         "count": 145
       },
-      "quantity":20
+      "stocks":20
     }
   ]
 }

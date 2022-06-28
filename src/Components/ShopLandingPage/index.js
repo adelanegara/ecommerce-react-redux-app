@@ -94,6 +94,12 @@ const ShopLandingPage = ({ userCart, addChart }) => {
                             <span> Category: {item.category} </span>
                             <span> Rate: {item.rating.rate}</span>
                           </div>
+                          <div><input
+                            className="input"
+                            type="number"
+                            min="1"
+                            defaultValue="1"
+                          /> </div>
                           <div className="form-group d-flex align-items-center">
                             <button
                               type="button"

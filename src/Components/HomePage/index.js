@@ -1,9 +1,9 @@
 import React from 'react'
 
-const index = () => {
+const HomePage = () => {
   return (
     <div>index Homepage</div>
   )
 }
 
-export default index
+export default HomePage

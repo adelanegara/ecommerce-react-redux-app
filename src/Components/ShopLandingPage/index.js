@@ -6,10 +6,12 @@ import { connect } from "react-redux";
 import { config } from "../../server/config";
 
 const ShopLandingPage = ({ userCart, addChart }) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const fetchData = async () => {
     const productList = await axios.get(config.url_products);
     setData(productList.data);
+    setFilteredData(productList.data);
   };
 
   useEffect(() => {
@@ -32,13 +34,32 @@ const ShopLandingPage = ({ userCart, addChart }) => {
     setData(sortData);
   };
 
+  const arraySearch = (array, keyword) => {
+    const searchTerm = keyword.toLowerCase();
+    return array.filter((value) => {
+      return value.title.toLowerCase().match(new RegExp(searchTerm, "g"));
+    });
+  };
+
+  const handleSearch = async (e) => {
+    let value = e.target.value;
+    let search = await arraySearch(data, value);
+    setFilteredData(search);
+  };
+
   return (
     <>
       <div className="row">
+    
         <div className="col-3 bg-primary">
           <div className="card mb-2">
             <div className="card-body">
               <h5 className="card-title">Sort</h5>
+              <input
+          className="input m-3"
+          placeholder="Search"
+          onChange={(e) => handleSearch(e)}
+        />
               <ul className="list-group">
                 <li
                   className="list-group-item"
@@ -79,8 +100,8 @@ const ShopLandingPage = ({ userCart, addChart }) => {
         <div className="col-9 bg-info">
           <div className="container">
             <div className="row">
-              {data?.map((item, index) => {
-             let quantity = 1;
+              {filteredData?.map((item, index) => {
+                let quantity = 1;
                 return (
                   <div className="col-4 mt-4" key={index}>
                     <div className="ui link cards">

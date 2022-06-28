@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import logo from "../../Image/logo.png"
+import { Link } from 'react-router-dom';
 
 const Navbar = ({}) => {
     const [filterData, setFilterData] = useState([]);
@@ -16,6 +16,7 @@ const Navbar = ({}) => {
         }
       };
   return (
+    
     <div className='navbar-light bg-light'>
       <div className='px-1 '>
       <nav className="navbar navbar-expand-lg ">
@@ -32,17 +33,25 @@ const Navbar = ({}) => {
             onChange={(e) => handleSearch(e)}
           />
         </li>
-        <li className="nav-item active">
-          <a className="nav-link" >Home </a>
+        <li className="nav-item px-1">
+        <Link to={`/`} className="btn btn-sm btn-secondary active mr-1">
+                Home
+              </Link>
         </li>
-        <li className="nav-item">
-          <a className="nav-link">About Us</a>
+        <li className="nav-item px-1">
+        <Link to={`/about`} className="btn btn-sm btn-secondary mr-1">
+                About Us
+              </Link>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" >Shop</a>
+        <li className="nav-item px-1">
+        <Link to={`/shop`} className="btn btn-sm btn-secondary mr-1">
+                Shop
+              </Link>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" >Cart</a>
+        <li className="nav-item px-1">
+        <Link to={`/cartlist`} className="btn btn-sm btn-secondary mr-1">
+                Cart
+              </Link>
         </li>
 
       </ul>

@@ -68,7 +68,7 @@ const ShopLandingPage = ({ userCart, addChart }) => {
                 return (
                   <ul key={index}>
                     <li>
-                      {item.title} | {item.price}
+                      {item.title} | {item.price} | {item.quantity}
                     </li>
                   </ul>
                 );
@@ -80,6 +80,7 @@ const ShopLandingPage = ({ userCart, addChart }) => {
           <div className="container">
             <div className="row">
               {data?.map((item, index) => {
+             let quantity = 1;
                 return (
                   <div className="col-4 mt-4" key={index}>
                     <div className="ui link cards">
@@ -94,26 +95,27 @@ const ShopLandingPage = ({ userCart, addChart }) => {
                             <span> Category: {item.category} </span>
                             <span> Rate: {item.rating.rate}</span>
                           </div>
-                          <div><input
+                          <input
                             className="input"
                             type="number"
                             min="1"
                             defaultValue="1"
-                          /> </div>
+                            onChange={(e) => (quantity = e.target.value)}
+                          />
                           <div className="form-group d-flex align-items-center">
                             <button
                               type="button"
                               className="btn btn-sm btn-dark button-shop"
-                              onClick={() => addChart(item)}
+                              onClick={() => addChart({ ...item, quantity })}
                             >
                               Add Item
                             </button>
                             <Link
-                            to={`/view/${item.id}`}
-                            className="btn btn-sm btn-dark mr-1"
-                          >
-                            View 
-                          </Link>
+                              to={`/view/${item.id}`}
+                              className="btn btn-sm btn-dark mr-1"
+                            >
+                              View
+                            </Link>
                           </div>
                         </div>
                       </div>

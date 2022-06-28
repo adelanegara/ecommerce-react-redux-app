@@ -3,7 +3,10 @@
   padding: 0;
   margin: 0;
 }
+button.button-shop{
+  margin-right: 10px;
 
+}
 .ui.cards > .card > .image {
   height: 250px;
   padding: 20px;

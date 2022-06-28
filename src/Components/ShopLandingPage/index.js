@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { config } from "../../server/config";
-
+import style from "../ShopLandingPage/"
 
 const ShopLandingPage = () => {
   const [data, setData] = useState();
@@ -16,8 +16,8 @@ const ShopLandingPage = () => {
 
   return (
     <>
-      <div className="container-shop">
-        <div className="row">
+
+   <div className="row">
           <div className="col-3 bg-primary">
             <div className="card ">
               <div className="card-body">
@@ -31,32 +31,43 @@ const ShopLandingPage = () => {
             </div>
           </div>
           <div className="col-9 bg-info">
-            <div className="container col-3">
+            <div className="container">
               <div className="row">
-                {data?.map((item, index) => {
-                  return (
-                    <div className="col-sm " key={index}>
-                      <div className="card ">
-                        <div className="card-body">
-                          <h5 className="card-title">{item.title}</h5>
-                          <img className="img-fluid img-thumbnail"src={item.image} alt={item.id} />
-                          <p>{item.price} </p>
-                          <button className="btn btn-sm btn-primary mr-1 px-2 ">
-                            Add Cart
-                          </button>
-                          <button className="btn btn-sm btn-primary mr-1">
-                            View{" "}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                 <div className="container-shop col-4">
+      <div className="ui grid container">
+      {data?.map((item, index) => {
+return(<>
+ <div className="four wide column" >
+          <div className="ui link cards">
+            <div className="card" key={index}>
+              <div className="image">
+                <img src={item.image} alt={item.id} />
+              </div>
+              <div className="content">
+                <div className="header">{item.title}</div>
+                <div className="meta price">$ {item.price}</div>
+                <div className="meta">{item.category}</div>
               </div>
             </div>
           </div>
-        </div>
       </div>
+
+</>)
+      })}
+
+
+
+     
+
+
+    </div>
+        
+      </div>
+              </div>
+            </div> 
+      </div>
+        </div> 
+  
     </>
   );
 };

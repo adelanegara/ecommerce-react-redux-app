@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import logo from "../../Image/logo.png"
 
 const Navbar = ({}) => {
     const [filterData, setFilterData] = useState([]);
@@ -15,9 +16,12 @@ const Navbar = ({}) => {
         }
       };
   return (
-    <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand">LOGO </a>
+    <div className='navbar-light bg-light'>
+      <div className='px-1 '>
+      <nav className="navbar navbar-expand-lg ">
+        <div className='px-5'>
+          <h1> ABC SHOP</h1>
+        </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
@@ -44,7 +48,12 @@ const Navbar = ({}) => {
       </ul>
       
     </div>
-  </nav></div>
+  </nav>
+
+
+      </div>
+
+  </div>
   )
 }
 

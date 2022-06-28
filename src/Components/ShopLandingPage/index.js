@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import { config } from "../../server/config";
 
 const ShopLandingPage = () => {
@@ -92,5 +93,15 @@ const ShopLandingPage = () => {
     </>
   );
 };
+const mapStateToProps = (state) => ({
+  userChart: state.isLogin,
+});
 
-export default ShopLandingPage;
+const mapDispatchToProps = (dispatch) => ({
+  addChart: () => {
+    dispatch({ type: "ADD_CHART" });
+  },
+});
+
+export { ShopLandingPage as ShopLandingPageUnwrapped };
+export default connect(mapStateToProps, mapDispatchToProps)(ShopLandingPage);

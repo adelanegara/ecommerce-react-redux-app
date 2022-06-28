@@ -3,21 +3,20 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { config } from "../../server/config";
 
-const ShopLandingPage = () => {
+const ShopLandingPage = ({ userCart, addChart }) => {
   const [data, setData] = useState();
-  const [cart, setCart] = useState([]);
+  const [filterData, setFilterData] = useState();
   const fetchData = async () => {
     const productList = await axios.get(config.url_products);
     setData(productList.data);
+    setFilterData(productList.data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const addCart = (item) => {
-    setCart([...cart, item]);
-  };
+
 
   return (
     <>
@@ -36,7 +35,7 @@ const ShopLandingPage = () => {
           <div className="card ">
             <div className="card-body">
               <h5 className="card-title">Cart</h5>
-              {cart.map((item, index) => {
+              {userCart?.map((item, index) => {
                 return (
                   <ul key={index}>
                     <li>
@@ -51,7 +50,7 @@ const ShopLandingPage = () => {
         <div className="col-9 bg-info">
           <div className="container">
             <div className="row">
-              {data?.map((item, index) => {
+              {filterData?.map((item, index) => {
                 return (
                   <>
                     <div className="col-4 mt-4">
@@ -63,12 +62,12 @@ const ShopLandingPage = () => {
                           <div className="content">
                             <div className="header">{item.title}</div>
                             <div className="meta price">$ {item.price}</div>
-                            <div className="meta">{item.category}</div>
+                            <div className="meta"><span> Category: {item.category} </span></div>
                             <div className="form-group d-flex align-items-center">
                               <button
                                 type="button"
                                 className="btn btn-sm btn-dark button-shop"
-                                onClick={() => addCart(item)}
+                                onClick={() => addChart(item)}
                               >
                                 Add Item
                               </button>
@@ -94,14 +93,13 @@ const ShopLandingPage = () => {
   );
 };
 const mapStateToProps = (state) => ({
-  userChart: state.isLogin,
+  userCart: state.userCart,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addChart: () => {
-    dispatch({ type: "ADD_CHART" });
+  addChart: (payload) => {
+    dispatch({ type: "ADD_CHART", payload });
   },
 });
 
-export { ShopLandingPage as ShopLandingPageUnwrapped };
 export default connect(mapStateToProps, mapDispatchToProps)(ShopLandingPage);

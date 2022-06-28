@@ -1,5 +1,6 @@
 const initialState = {
     userCart: [],
+    productSortAsc: []
   };
 
 export const whitelist = ["userCart"];

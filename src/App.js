@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import ShopLandingPage from "./Components/ShopLandingPage";
+import ViewProduct from "./Components/ViewProducts";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<ShopLandingPage />} />
+        <Route path="/view/:id" element={<ViewProduct />} />
       </Routes>
     </Router>
   );

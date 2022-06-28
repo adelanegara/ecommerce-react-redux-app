@@ -3,9 +3,8 @@
   padding: 0;
   margin: 0;
 }
-button.button-shop{
+button.button-shop {
   margin-right: 10px;
-
 }
 .ui.cards > .card > .image {
   height: 250px;
@@ -20,6 +19,7 @@ button.button-shop{
 }
 .ui.cards > .card > .content > .header {
   height: 48px;
+  font-weight: 600;
   overflow: hidden;
   margin-bottom: 5px;
 }
@@ -29,10 +29,10 @@ button.button-shop{
   overflow: hidden;
 }
 .ui.cards > .card .meta.price {
-  margin-bottom: 5px;
-  font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 22px;
   color: #333;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .ui.cards > .card .meta.price > a {
@@ -93,4 +93,49 @@ button.button-shop{
   color: #fff;
   font-size: 18px;
   margin-left: 0;
+}
+
+.navbar-nav {
+  margin-left: 100px;
+}
+
+a.navbar-brand {
+  font-weight: 900;
+}
+
+p.filter-text {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.content-product {
+  padding: 30px;
+}
+
+.product-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.price-text {
+  font-size: 22px;
+  color: #333;
+  font-weight: 800;
+}
+
+.rate {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: gray;
+}
+
+.category-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #333;
+}
+
+.row-view {
+  padding: 5rem;
 }

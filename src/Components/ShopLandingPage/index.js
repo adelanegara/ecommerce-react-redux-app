@@ -49,35 +49,34 @@ const ShopLandingPage = ({ userCart, addChart }) => {
 
   return (
     <>
-      <div className="row">
-    
-        <div className="col-3 bg-primary">
-          <div className="card mb-2">
-            <div className="card-body">
-              <h5 className="card-title">Sort</h5>
+      <div className="row m-0 ">
+        <div className="col-3 ">
+          <div className="card border-0 m-5">
+            <div className="card-body shadow p-3 mb-5">
+              <p className="card-title filter-text">FILTERS</p>
               <input
-          className="input m-3"
-          placeholder="Search"
-          onChange={(e) => handleSearch(e)}
-        />
+                className="input my-3"
+                placeholder="Search"
+                onChange={(e) => handleSearch(e)}
+              />
               <ul className="list-group">
                 <li
                   className="list-group-item"
                   onClick={() => handleSort("asc")}
                 >
-                  Ascending
+                  Sort Ascending
                 </li>
                 <li
                   className="list-group-item"
                   onClick={() => handleSort("desc")}
                 >
-                  Descending
+                  Sort Descending
                 </li>
                 <li
                   className="list-group-item"
                   onClick={() => handleSortRate()}
                 >
-                  Rates
+                  Sort Rates
                 </li>
               </ul>
             </div>
@@ -97,54 +96,54 @@ const ShopLandingPage = ({ userCart, addChart }) => {
             </div>
           </div>
         </div>
-        <div className="col-9 bg-info">
-          <div className="container">
-            <div className="row">
-              {filteredData?.map((item, index) => {
-                let quantity = 1;
-                return (
-                  <div className="col-4 mt-4" key={index}>
-                    <div className="ui link cards">
-                      <div className="card">
-                        <div className="image">
-                          <img src={item.image} alt={item.id} />
+        <div className="col-9 ">
+          <div className="row">
+            {filteredData?.map((item, index) => {
+              let quantity = 1;
+              return (
+                <div className="col-4 mt-4" key={index}>
+                  <div className="ui link cards">
+                    <div className="card shadow-sm p-3 mb-5 bg-white ">
+                      <div className="image">
+                        <img src={item.image} alt={item.id} />
+                      </div>
+                      <div className="rate">
+                        <p> Rate: {item.rating.rate}</p>
+                      </div>
+                      <div className="content content-product">
+                        <div className="header">{item.title}</div>
+                        <div className="category-text pb-2">
+                          <span>{item.category} </span>
                         </div>
-                        <div className="content">
-                          <div className="header">{item.title}</div>
-                          <div className="meta price">$ {item.price}</div>
-                          <div className="meta">
-                            <span> Category: {item.category} </span>
-                            <span> Rate: {item.rating.rate}</span>
-                          </div>
-                          <input
-                            className="input"
-                            type="number"
-                            min="1"
-                            defaultValue="1"
-                            onChange={(e) => (quantity = e.target.value)}
-                          />
-                          <div className="form-group d-flex align-items-center">
-                            <button
-                              type="button"
-                              className="btn btn-sm btn-dark button-shop"
-                              onClick={() => addChart({ ...item, quantity })}
-                            >
-                              Add Item
-                            </button>
-                            <Link
-                              to={`/view/${item.id}`}
-                              className="btn btn-sm btn-dark mr-1"
-                            >
-                              View
-                            </Link>
-                          </div>
+                        <div className="meta price">$ {item.price}</div>
+                        <input
+                          className="input mb-3"
+                          type="number"
+                          min="1"
+                          defaultValue="1"
+                          onChange={(e) => (quantity = e.target.value)}
+                        />
+                        <div className="form-group d-flex justify-content-between">
+                          <button
+                            type="button"
+                            className="btn btn-sm btn-dark button-shop"
+                            onClick={() => addChart({ ...item, quantity })}
+                          >
+                            Add Item
+                          </button>
+                          <Link
+                            to={`/view/${item.id}`}
+                            className="btn btn-sm btn-dark mr-1"
+                          >
+                            View
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

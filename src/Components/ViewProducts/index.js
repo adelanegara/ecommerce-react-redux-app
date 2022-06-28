@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { config } from "../../server/config";
 
-const ViewProduct = ({addChart}) => {
+const ViewProduct = ({ addChart }) => {
   const [data, setData] = useState();
   const { id } = useParams();
   const fetchData = async () => {
@@ -18,11 +17,11 @@ const ViewProduct = ({addChart}) => {
   }, []);
   return (
     <div classNameName="container">
-      <div className="row">
-        <div className="col-4 bg-primary">
+      <div className="row row-view ">
+        <div className="col-6 bg-primary">
           <div classNameName="container">
             <div className="card">
-              <div className="card-body">
+              <div className="card-body px-5">
                 <img
                   className="card-img-top"
                   src={data?.image}
@@ -32,27 +31,22 @@ const ViewProduct = ({addChart}) => {
             </div>
           </div>
         </div>
-        <div className="col-8 bg-success">
-        <div className="content">
-                          <div className="header">{data?.title}</div>
-                          <div className="meta price">$ {data?.price}</div>
-                          <div className="meta">
-                            <p> About Product: {data?.description} </p>
-                            <p> Rate: {data?.rating.rate}</p>
-                            <p> Category: {data?.category} </p>
+        <div className="col-6 bg-success">
+          <div className="content content-product">
+            <div className="product-title">{data?.title}</div>
+            <div className="py-5">{data?.description}</div>
 
-                          </div>
-                          <div className="form-group d-flex align-items-center">
-                            <button
-                              type="button"
-                              className="btn btn-sm btn-dark button-shop"
-                              onClick={() => addChart(data)}
-                            >
-                              Add Item
-                            </button>
-                          
-                          </div>
-                        </div>
+            <div className="price-text">$ {data?.price}</div>
+            <div className="form-group d-flex align-items-center">
+              <button
+                type="button"
+                className="btn btn-sm btn-dark button-shop"
+                onClick={() => addChart(data)}
+              >
+                Add Item
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

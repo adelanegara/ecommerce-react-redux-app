@@ -1,69 +1,39 @@
-import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
 
-const Navbar = ({}) => {
-    const [filterData, setFilterData] = useState([]);
-
-    const handleSearch = (event) => {
-        let value = event.target.value.toLowerCase();
-        let result = [];
-        result = filterData.filter((data) => {
-          return data.title.search(value) !== -1;
-        });
-        setFilterData(result);
-        if (value === "") {
-          setFilterData();
-        }
-      };
+const Navbar = () => {
   return (
-    
-    <div className='navbar-light bg-light'>
-      <div className='px-1 '>
-      <nav className="navbar navbar-expand-lg ">
-        <div className='px-5'>
-          <h1> ABC SHOP</h1>
-        </div>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                    <input
-            type="text"
-            className="form-control mb-2 mt-2"
-            placeholder="Search"
-            onChange={(e) => handleSearch(e)}
-          />
-        </li>
-        <li className="nav-item px-1">
-        <Link to={`/`} className="btn btn-sm btn-secondary active mr-1">
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light px-5 py-4">
+        <a className="navbar-brand" href={"/"}>
+          SHOPIFY
+        </a>
+        <div className="collapse navbar-collapse ">
+          <ul className="navbar-nav">
+            <li className="nav-item ">
+              <a className="nav-link" href={"/"}>
                 Home
-              </Link>
-        </li>
-        <li className="nav-item px-1">
-        <Link to={`/about`} className="btn btn-sm btn-secondary mr-1">
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href={"/about"}>
                 About Us
-              </Link>
-        </li>
-        <li className="nav-item px-1">
-        <Link to={`/shop`} className="btn btn-sm btn-secondary mr-1">
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href={"/shop"}>
                 Shop
-              </Link>
-        </li>
-        <li className="nav-item px-1">
-        <Link to={`/cartlist`} className="btn btn-sm btn-secondary mr-1">
-                Cart
-              </Link>
-        </li>
-
-      </ul>
-      
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="">
+          <button type="button" class="btn btn-outline-dark">
+            Cart{" "}
+          </button>
+        </div>
+      </nav>
     </div>
-  </nav>
+  );
+};
 
-
-      </div>
-
-  </div>
-  )
-}
-
-export default Navbar
+export default Navbar;

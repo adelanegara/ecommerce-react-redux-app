@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import ShopLandingPage from "./Components/ShopLandingPage";
+import ShopLandingPage from "./Components/ShopLandingPage/loadable";
 import HomePage from "./Components/HomePage";
 import ViewProduct from "./Components/ViewProducts";
 import AboutUsPage from "./Components/AboutUsPage";

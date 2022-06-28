@@ -37,8 +37,10 @@ const ViewProduct = ({addChart}) => {
                           <div className="header">{data?.title}</div>
                           <div className="meta price">$ {data?.price}</div>
                           <div className="meta">
-                            <span> Category: {data?.category} </span>
-                            <span> Rate: {data?.rating.rate}</span>
+                            <p> About Product: {data?.description} </p>
+                            <p> Rate: {data?.rating.rate}</p>
+                            <p> Category: {data?.category} </p>
+
                           </div>
                           <div className="form-group d-flex align-items-center">
                             <button

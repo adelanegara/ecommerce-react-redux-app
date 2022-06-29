@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -27,9 +28,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="">
-          <button type="button" class="btn btn-outline-dark">
-            Cart{" "}
-          </button>
+          <Link to={`/cartlist`} className="btn btn-outline-dark">
+            Cart
+          </Link>
         </div>
       </nav>
     </div>

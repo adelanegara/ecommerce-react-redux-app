@@ -7,7 +7,10 @@ import sumBy from "lodash/sumBy";
 const Navbar = ({ userCart }) => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light px-5 py-4">
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-light px-5 py-4 "
+        data-testid="navbar"
+      >
         <a className="navbar-brand" href={"/"}>
           SHOPIFY
         </a>
@@ -49,5 +52,7 @@ const Navbar = ({ userCart }) => {
 const mapStateToProps = (state) => ({
   userCart: state.userCart,
 });
+
+export { Navbar as NavbarUnwrapped };
 
 export default connect(mapStateToProps)(Navbar);

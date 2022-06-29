@@ -20,7 +20,7 @@ const ShopLandingPage = ({ userCart, addChart }) => {
 
   const handleSort = (type) => {
     const sortData = orderBy(data, ["title"], [type]);
-    setData(sortData);
+    setFilteredData(sortData);
   };
 
   const handleSortRate = () => {
@@ -31,7 +31,7 @@ const ShopLandingPage = ({ userCart, addChart }) => {
       },
       ["desc"]
     );
-    setData(sortData);
+    setFilteredData(sortData);
   };
 
   const arraySearch = (array, keyword) => {
@@ -97,11 +97,11 @@ const ShopLandingPage = ({ userCart, addChart }) => {
           </div>
         </div>
         <div className="col-9 ">
-          <div className="row">
+          <div className="row mt-5">
             {filteredData?.map((item, index) => {
-              let quantity = 1;
+              // let quantity = 1;
               return (
-                <div className="col-4 mt-4" key={index}>
+                <div className="col-4 " key={index}>
                   <div className="ui link cards">
                     <div className="card shadow-sm p-3 mb-5 bg-white ">
                       <div className="image">
@@ -116,18 +116,18 @@ const ShopLandingPage = ({ userCart, addChart }) => {
                           <span>{item.category} </span>
                         </div>
                         <div className="meta price">$ {item.price}</div>
-                        <input
+                        {/* <input
                           className="input mb-3"
                           type="number"
                           min="1"
                           defaultValue="1"
                           onChange={(e) => (quantity = e.target.value)}
-                        />
+                        /> */}
                         <div className="form-group d-flex justify-content-between">
                           <button
                             type="button"
                             className="btn btn-sm btn-dark button-shop"
-                            onClick={() => addChart({ ...item, quantity })}
+                            // onClick={() => addChart({ ...item, quantity })}
                           >
                             Add Item
                           </button>

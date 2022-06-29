@@ -16,11 +16,16 @@ const ViewProduct = ({ addChart }) => {
     fetchData();
   }, []);
   return (
-    <div classNameName="container">
+    <div className="container">
+      <div className="">
+        {" "}
+        <h5 className="heading-view pt-5 "> DETAIL PRODUCT</h5>
+      </div>
+
       <div className="row row-view ">
-        <div className="col-6 bg-primary">
+        <div className="col-6 ">
           <div classNameName="container">
-            <div className="card">
+            <div className="card shadow p-3 mb-5 border-0">
               <div className="card-body px-5">
                 <img
                   className="card-img-top"
@@ -31,13 +36,20 @@ const ViewProduct = ({ addChart }) => {
             </div>
           </div>
         </div>
-        <div className="col-6 bg-success">
-          <div className="content content-product">
+        <div className="col-6">
+          <div className="content content-product shadow-sm  ">
             <div className="product-title">{data?.title}</div>
-            <div className="py-5">{data?.description}</div>
+            <div className="category-text">
+              <span>{data?.category} </span>
+            </div>
+
+            <div className="pt-4">{data?.description}</div>
+            <div className="rate pt-2">
+              <p> Rate: {data?.rating.rate}</p>
+            </div>
 
             <div className="price-text">$ {data?.price}</div>
-            <div className="form-group d-flex align-items-center">
+            <div className="form-group pt-3 d-flex align-items-center">
               <button
                 type="button"
                 className="btn btn-sm btn-dark button-shop"

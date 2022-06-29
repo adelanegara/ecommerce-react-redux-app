@@ -127,7 +127,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
                       <div className="image">
                         <img src={item.image} alt={item.id} />
                       </div>
-                      <div className="rate">
+                      <div className="rate text-center">
                         <p> Rate: {item.rating.rate}</p>
                       </div>
                       <div className="content content-product">

@@ -101,6 +101,7 @@ button.button-shop {
 
 a.navbar-brand {
   font-weight: 900;
+  font-size: 26px;
 }
 
 p.filter-text {
@@ -124,7 +125,6 @@ p.filter-text {
 }
 
 .rate {
-  text-align: center;
   font-size: 14px;
   font-weight: 600;
   color: gray;
@@ -138,4 +138,8 @@ p.filter-text {
 
 .row-view {
   padding: 5rem;
+}
+
+.heading-view {
+  font-weight: 600;
 }

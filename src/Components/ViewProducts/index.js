@@ -76,10 +76,10 @@ const ViewProduct = ({ userCart, addChart, updateCart }) => {
         </div>
         <div className="col-6">
           <div className="content content-product shadow-sm  ">
-            <div className="product-title">{data?.title}</div>
             <div className="category-text">
               <span>{data?.category} </span>
             </div>
+            <div className="product-title">{data?.title}</div>
 
             <div className="pt-4">{data?.description}</div>
             <div className="rate pt-2">
@@ -87,6 +87,9 @@ const ViewProduct = ({ userCart, addChart, updateCart }) => {
             </div>
 
             <div className="price-text">$ {data?.price}</div>
+            <div className="category-text pt-2">
+              <span>{data?.stocks} pieces available </span>
+            </div>
             <div className="d-flex justify-content-between mt-2 bg-light align-items-center">
               <button className="btn btn-primary" onClick={subQty}>
                 -

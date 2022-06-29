@@ -125,11 +125,15 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
                         <p> Rate: {item.rating.rate}</p>
                       </div>
                       <div className="content content-product">
-                        <div className="header">{item.title}</div>
-                        <div className="category-text pb-2">
+                        <div className="category-text">
                           <span>{item.category} </span>
                         </div>
+                        <div className="header">{item.title}</div>
+
                         <div className="meta price">$ {item.price}</div>
+                        <div className="category-text pb-2">
+                          <span>{item.stocks} pieces available </span>
+                        </div>
                         <div className="form-group d-flex justify-content-between">
                           <button
                             type="button"

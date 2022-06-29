@@ -4,17 +4,20 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { config } from "../../server/config";
 
+//pass the parameter addChart
 const ViewProduct = ({ addChart }) => {
   const [data, setData] = useState();
   const { id } = useParams();
+  //fetch product from baseurl
   const fetchData = async () => {
     const productList = await axios.get(`${config.url_products}/${id}`);
-    setData(productList.data);
+    setData(productList.data); //update data
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div className="container">
       <div className="">
@@ -65,14 +68,17 @@ const ViewProduct = ({ addChart }) => {
   );
 };
 
+//redux selector
 const mapStateToProps = (state) => ({
   userCart: state.userCart,
 });
 
+//redux action
 const mapDispatchToProps = (dispatch) => ({
   addChart: (payload) => {
     dispatch({ type: "ADD_CHART", payload });
   },
 });
 
+//combine the 2 state (action & selector from redux)
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProduct);

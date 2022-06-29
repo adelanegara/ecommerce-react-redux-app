@@ -5,24 +5,28 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { config } from "../../server/config";
 
+//pass the parameter userCart, addChart, updateCart
 const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]); //for search func
+  //fetch product from baseurl
   const fetchData = async () => {
     const productList = await axios.get(config.url_products);
-    setData(productList.data);
-    setFilteredData(productList.data);
+    setData(productList.data); //update data
+    setFilteredData(productList.data); //update product list
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  //handling sort by type
   const handleSort = (type) => {
     const sortData = orderBy(data, ["title"], [type]);
     setFilteredData(sortData);
   };
 
+  //handling sort by rate: asc/desc
   const handleSortRate = () => {
     const sortData = orderBy(
       data,
@@ -34,6 +38,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
     setFilteredData(sortData);
   };
 
+  //hadle new updated cart value
   const handleAddCart = (cart) => {
     const payload = {
       ...cart,
@@ -55,6 +60,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
     }
   };
 
+  //handling word for search bar
   const arraySearch = (array, keyword) => {
     const searchTerm = keyword.toLowerCase();
     return array.filter((value) => {
@@ -62,6 +68,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
     });
   };
 
+  //handling search bar
   const handleSearch = async (e) => {
     let value = e.target.value;
     let search = await arraySearch(data, value);
@@ -100,20 +107,6 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
                   Sort Rates
                 </li>
               </ul>
-            </div>
-          </div>
-          <div className="card ">
-            <div className="card-body">
-              <h5 className="card-title">Cart</h5>
-              {userCart?.map((item, index) => {
-                return (
-                  <ul key={index}>
-                    <li>
-                      {item.title} | {item.price} | {item.quantity}
-                    </li>
-                  </ul>
-                );
-              })}
             </div>
           </div>
         </div>
@@ -163,10 +156,12 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
     </>
   );
 };
+//redux selector
 const mapStateToProps = (state) => ({
   userCart: state.userCart,
 });
 
+//redux action
 const mapDispatchToProps = (dispatch) => ({
   addChart: (payload) => {
     dispatch({ type: "ADD_CHART", payload });
@@ -176,4 +171,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+//combine the 2 state (action & selector from redux)
 export default connect(mapStateToProps, mapDispatchToProps)(ShopLandingPage);

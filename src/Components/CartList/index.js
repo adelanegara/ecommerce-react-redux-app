@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import sumBy from "lodash/sumBy";
 
+//pass the parameter addChart
 const CartList = ({ userCart, updateCart }) => {
-  let subTotalPrice = [];
+  let subTotalPrice = []; //array for calc sum total
+  //handle increment/decrement
   const handleQty = (id, type) => {
     const myCart = userCart.map((item) => {
       if (item.id === id) {
@@ -15,7 +17,7 @@ const CartList = ({ userCart, updateCart }) => {
       }
       return item;
     });
-    updateCart(myCart);
+    updateCart(myCart); //update myCart
   };
   return (
     <div className="container">
@@ -32,7 +34,7 @@ const CartList = ({ userCart, updateCart }) => {
             </tr>
           </thead>
           {userCart?.map((item, index) => {
-            const totalPrice = item.price * item.quantity;
+            const totalPrice = item.price * item.quantity; //calc total price from quantity
             subTotalPrice.push(totalPrice);
             return (
               <tbody key={index}>
@@ -92,14 +94,17 @@ const CartList = ({ userCart, updateCart }) => {
   );
 };
 
+//redux selector
 const mapStateToProps = (state) => ({
   userCart: state.userCart,
 });
 
+//redux action
 const mapDispatchToProps = (dispatch) => ({
   updateCart: (payload) => {
     dispatch({ type: "UPDATE_CART", payload });
   },
 });
 
+//combine the 2 state (action & selector from redux)
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);

@@ -28,6 +28,7 @@ const CartList = ({ userCart, updateCart }) => {
               <th scope="col">Unit Price</th>
               <th scope="col">QTY</th>
               <th scope="col">Sub Total</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           {userCart?.map((item, index) => {
@@ -57,6 +58,10 @@ const CartList = ({ userCart, updateCart }) => {
                     </div>
                   </td>
                   <td>$ {totalPrice}</td>
+                  <td>
+                    {" "}
+                    <button className="btn btn-danger">x</button>
+                  </td>
                 </tr>
               </tbody>
             );

@@ -83,7 +83,8 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
             <div className="card-body shadow p-3 mb-5">
               <p className="card-title filter-text">FILTERS</p>
               <input
-                className="input my-3"
+                className="input form-control my-3"
+                type="text"
                 placeholder="Search"
                 onChange={(e) => handleSearch(e)}
               />

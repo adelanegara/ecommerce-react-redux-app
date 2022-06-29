@@ -49,7 +49,6 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
         }
         return item;
       });
-      console.log(myCart);
       updateCart(myCart);
     } else {
       addChart(payload);
@@ -147,7 +146,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
                           </button>
                           <Link
                             to={`/view/${item.id}`}
-                            className="btn btn-sm btn-da rk mr-1"
+                            className="btn btn-sm btn-dark button-shop"
                           >
                             View
                           </Link>

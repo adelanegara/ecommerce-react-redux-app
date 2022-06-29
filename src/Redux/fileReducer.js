@@ -1,10 +1,11 @@
 const initialState = {
-  userCart: [],
-  productSortAsc: [],
+  userCart: [], //for updating updated product list
+  productSortAsc: [], // for sort asc from products
 };
 
 export const whitelist = ["userCart"];
 
+//action
 export const fileReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_CHART":

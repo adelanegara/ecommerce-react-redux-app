@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import classes from "./style.css";
 
+//import loading condition
+//loading svg
 const propTypes = {
   isLoading: PropTypes.bool.isRequired,
 };

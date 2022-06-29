@@ -3,10 +3,10 @@ import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import ShopLandingPage from "./Components/ShopLandingPage/loadable";
-import HomePage from "./Components/HomePage";
-import ViewProduct from "./Components/ViewProducts";
-import AboutUsPage from "./Components/AboutUsPage";
-import CartList from "./Components/CartList";
+import HomePage from "./Components/HomePage/loadable";
+import ViewProduct from "./Components/ViewProducts/loadable";
+import AboutUsPage from "./Components/AboutUsPage/loadable";
+import CartList from "./Components/CartList/loadble";
 
 function App() {
   return (

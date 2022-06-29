@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import orderBy from "lodash/orderBy";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { config } from "../../server/config";
@@ -54,7 +55,11 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
         }
         return item;
       });
-      updateCart(myCart);
+      if (checkCart.quantity < checkCart.stocks) {
+        updateCart(myCart);
+      } else {
+        toast.warning("out of stock");
+      }
     } else {
       addChart(payload);
     }
@@ -176,5 +181,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+export { ShopLandingPage as ShopLandingPageUnwrapped };
 //combine the 2 state (action & selector from redux)
 export default connect(mapStateToProps, mapDispatchToProps)(ShopLandingPage);

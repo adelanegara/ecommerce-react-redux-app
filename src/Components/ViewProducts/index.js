@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { config } from "../../server/config";
 
 //pass the parameter userCart, addChart, updateCart
@@ -49,11 +50,16 @@ const ViewProduct = ({ userCart, addChart, updateCart }) => {
         }
         return item;
       });
-      updateCart(myCart);
+      if (checkCart.quantity < checkCart.stocks) {
+        updateCart(myCart);
+        window.location.replace("/shop");
+      } else {
+        toast.warning("out of stock");
+      }
     } else {
       addChart(payload);
+      window.location.replace("/shop");
     }
-    window.location.replace("/shop");
   };
 
   return (

@@ -18,7 +18,7 @@ const CartList = ({ userCart, updateCart }) => {
   const handleQty = (id, type) => {
     const myCart = userCart.map((item) => {
       if (item.id === id) {
-        if (type === "add") {
+        if (type === "add" && item.quantity < item.stocks) {
           item.quantity += 1;
         } else if (type === "sub" && item.quantity > 1) {
           item.quantity -= 1;
@@ -44,7 +44,7 @@ const CartList = ({ userCart, updateCart }) => {
             </tr>
           </thead>
           {userCart?.map((item, index) => {
-            const totalPrice = item.price * item.quantity;
+            const totalPrice = (item.price * item.quantity).toFixed(2);
             subTotalPrice.push(totalPrice);
             return (
               <tbody key={index}>
@@ -87,7 +87,6 @@ const CartList = ({ userCart, updateCart }) => {
           <table class="table table-hover table-dark">
             <thead>
               <tr>
-                <th scope="col">No</th>
                 <th scope="col">Total Items</th>
                 <th scope="col">Checkout</th>
               </tr>
@@ -95,7 +94,6 @@ const CartList = ({ userCart, updateCart }) => {
             <tbody>
               {userCart && (
                 <tr>
-                  <th scope="row">1</th>
                   {/* sum total quantity */}
                   <td>{sumBy(userCart, "quantity")}</td>
                   {/* sum total price */}

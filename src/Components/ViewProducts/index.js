@@ -21,7 +21,9 @@ const ViewProduct = ({ userCart, addChart, updateCart }) => {
 
   //handle increment
   const addQty = () => {
-    setQuantity(quantity + 1);
+    if (quantity < data.stocks) {
+      setQuantity(quantity + 1);
+    }
   };
 
   //handle minus

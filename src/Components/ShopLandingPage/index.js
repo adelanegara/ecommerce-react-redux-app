@@ -49,7 +49,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
     });
     if (checkCart) {
       const myCart = userCart.map((item) => {
-        if (item.id === checkCart.id) {
+        if (item.id === checkCart.id && item.quantity < item.stocks) {
           item.quantity += 1;
         }
         return item;

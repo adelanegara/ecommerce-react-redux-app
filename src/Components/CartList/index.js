@@ -31,6 +31,24 @@ const CartList = ({ userCart }) => {
             );
           })}
         </table>
+        <div className="pt-5">
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Total Items</th>
+                <th scope="col">Checkout</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>15</td>
+                <td>$200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

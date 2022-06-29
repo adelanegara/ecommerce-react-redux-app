@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { config } from "../../server/config";
 
-const ShopLandingPage = ({ userCart, addChart }) => {
+const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const fetchData = async () => {
@@ -32,6 +32,28 @@ const ShopLandingPage = ({ userCart, addChart }) => {
       ["desc"]
     );
     setFilteredData(sortData);
+  };
+
+  const handleAddCart = (cart) => {
+    const payload = {
+      ...cart,
+      quantity: 1,
+    };
+    const checkCart = userCart.find((item) => {
+      return item.id === cart.id;
+    });
+    if (checkCart) {
+      const myCart = userCart.map((item) => {
+        if (item.id === checkCart.id) {
+          item.quantity += 1;
+        }
+        return item;
+      });
+      console.log(myCart);
+      updateCart(myCart);
+    } else {
+      addChart(payload);
+    }
   };
 
   const arraySearch = (array, keyword) => {
@@ -99,7 +121,6 @@ const ShopLandingPage = ({ userCart, addChart }) => {
         <div className="col-9 ">
           <div className="row mt-5">
             {filteredData?.map((item, index) => {
-              // let quantity = 1;
               return (
                 <div className="col-4 " key={index}>
                   <div className="ui link cards">
@@ -116,24 +137,17 @@ const ShopLandingPage = ({ userCart, addChart }) => {
                           <span>{item.category} </span>
                         </div>
                         <div className="meta price">$ {item.price}</div>
-                        {/* <input
-                          className="input mb-3"
-                          type="number"
-                          min="1"
-                          defaultValue="1"
-                          onChange={(e) => (quantity = e.target.value)}
-                        /> */}
                         <div className="form-group d-flex justify-content-between">
                           <button
                             type="button"
                             className="btn btn-sm btn-dark button-shop"
-                            // onClick={() => addChart({ ...item, quantity })}
+                            onClick={() => handleAddCart(item)}
                           >
                             Add Item
                           </button>
                           <Link
                             to={`/view/${item.id}`}
-                            className="btn btn-sm btn-dark mr-1"
+                            className="btn btn-sm btn-da rk mr-1"
                           >
                             View
                           </Link>
@@ -157,6 +171,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addChart: (payload) => {
     dispatch({ type: "ADD_CHART", payload });
+  },
+  updateCart: (payload) => {
+    dispatch({ type: "UPDATE_CART", payload });
   },
 });
 

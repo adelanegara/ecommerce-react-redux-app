@@ -2,23 +2,33 @@ import React from "react";
 import { connect } from "react-redux";
 import sumBy from "lodash/sumBy";
 
-//pass the parameter addChart
+//pass the parameter userCart, updateCart
 const CartList = ({ userCart, updateCart }) => {
-  let subTotalPrice = []; //array for calc sum total
-  //handle increment/decrement
+  let subTotalPrice = [];
+
+  //handle del func
+  const handleDelete = (id) => {
+    const newCart = userCart.filter((item) => {
+      return item.id !== id;
+    });
+    updateCart(newCart);
+  };
+
+  //stock func
   const handleQty = (id, type) => {
     const myCart = userCart.map((item) => {
       if (item.id === id) {
         if (type === "add") {
           item.quantity += 1;
-        } else {
+        } else if (type === "sub" && item.quantity > 1) {
           item.quantity -= 1;
         }
       }
       return item;
     });
-    updateCart(myCart); //update myCart
+    updateCart(myCart);
   };
+
   return (
     <div className="container">
       <div className="pt-5">
@@ -34,7 +44,7 @@ const CartList = ({ userCart, updateCart }) => {
             </tr>
           </thead>
           {userCart?.map((item, index) => {
-            const totalPrice = item.price * item.quantity; //calc total price from quantity
+            const totalPrice = item.price * item.quantity;
             subTotalPrice.push(totalPrice);
             return (
               <tbody key={index}>
@@ -61,8 +71,12 @@ const CartList = ({ userCart, updateCart }) => {
                   </td>
                   <td>$ {totalPrice}</td>
                   <td>
-                    {" "}
-                    <button className="btn btn-danger">x</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      x
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -82,7 +96,9 @@ const CartList = ({ userCart, updateCart }) => {
               {userCart && (
                 <tr>
                   <th scope="row">1</th>
+                  {/* sum total quantity */}
                   <td>{sumBy(userCart, "quantity")}</td>
+                  {/* sum total price */}
                   <td>$ {sumBy(subTotalPrice)}</td>
                 </tr>
               )}

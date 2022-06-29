@@ -55,14 +55,14 @@ const ViewProduct = ({ userCart, addChart, updateCart }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container" data-testid="view">
       <div className="">
         <h5 className="heading-view pt-5 "> DETAIL PRODUCT</h5>
       </div>
 
       <div className="row row-view ">
         <div className="col-6 ">
-          <div classNameName="container">
+          <div className="container">
             <div className="card shadow p-3 mb-5 border-0">
               <div className="card-body px-5">
                 <img
@@ -127,6 +127,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-//combine the 2 state (action & selector from redux)
+export { ViewProduct as ViewProductUnwrapped };
 
+//combine the 2 state (action & selector from redux)
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProduct);

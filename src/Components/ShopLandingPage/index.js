@@ -110,7 +110,7 @@ const ShopLandingPage = ({ userCart, addChart, updateCart }) => {
                   className="list-group-item"
                   onClick={() => handleSortRate()}
                 >
-                  Sort Rates
+                  Sort Available
                 </li>
               </ul>
             </div>
